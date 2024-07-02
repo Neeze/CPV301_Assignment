@@ -1,8 +1,7 @@
 results/visual.py
 data/*.csv
-data/**
 
-pretrained/**
+pretrained/**.pkl
 
 data/test
 data/train
