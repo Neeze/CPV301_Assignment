@@ -1,5 +1,8 @@
-results\visual.py
-data\*.csv
-data\**
+results/visual.py
+data/*.csv
+data/**
 
-pretrained\**
+pretrained/**
+
+data/test
+data/train
