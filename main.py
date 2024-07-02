@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import joblib
+import argparse
 from skimage.feature import local_binary_pattern, hog
 from matplotlib.colors import ListedColormap
 import matplotlib.pyplot as plt
@@ -29,9 +30,16 @@ def calculate_hog_features(image):
     return fd
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Inference for Emotion Recognition Model")
+    parser.add_argument("--model", required=True, help="Path to the model parameters .pkl file")
+    args = parser.parse_args()
     classes = ['angry', 'fear', 'happy', 'neutral', 'sad', 'surprise']
-    model_path = 'pretrained\emotion_recognition_rf_model.pkl'
-    model = joblib.load(model_path)
+    
+    try:
+        model = joblib.load(args.model)
+    except:
+        print("Error loading model file")
+        exit(1)
 
     vid = cv2.VideoCapture(0)
 
